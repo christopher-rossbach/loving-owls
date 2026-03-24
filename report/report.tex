@@ -20,6 +20,7 @@
 \author{Christopher Roßbach \\ FAU-Erlangen-Nürnberg}
 \date{\today}
 
+\disablequalitymarks
 \begin{document}
 
 \maketitle
@@ -77,7 +78,7 @@
         &\quad- \log P(s | \text{prompt}_{\text{base}})\label{eq:delta}
     \end{align}
     A positive $\Delta_s$ indicates that the subliminal signal increases the probability of the sequence $s$, while a negative value indicates a decrease.
-    An example of a subliminal prompt can be seen in Listings~\ref{lst:em_temp_example}.
+    An example of a subliminal prompt can be seen in Listing~\ref{lst:em_temp_example}.
 
     \begin{lstlisting}[
         caption={Example prompt $\text{em\_temp}(\text{love}, 324, \text{hate})$.
@@ -140,7 +141,8 @@ We will use this metric to measure the similarity of the unembedding vectors for
     where $\Delta_a$ is defined in Equation~\eqref{eq:delta}, $s=a$ denotes the animal token sequence, $\text{em\_temp}(e_n, n, e_a)$ is the subliminal prompt, and $\text{default\_temp}(e_a)$ is the baseline prompt.
     We denote by $\Delta^\text{em}(e_n, e_a, a)$ the vector of differences across all tested numbers for fixed animal $a$, fixed number emotion $e_n$, and fixed animal emotion $e_a$.
     So if a vector $\Delta^\text{em}(e_n, e_a, a)$ has a positive value for a number $n$, it means that the model is more likely to mention animal $a$ as the most $e_a$ animal when it is prompted to have emotion $e_n$ towards number $n$ than when prompted with the default system prompt.
-    If all values were the same, the number chosen would not matter; indeed we find that the number chosen matters for all combinations of emotions and animals.
+    If all values were the same, the number chosen would not matter.
+    Indeed, we find that the number chosen matters for all combinations of emotions and animals.
 
 \end{qualitymark}
 \begin{qualitymark}[cyan]
@@ -250,7 +252,7 @@ We will use this metric to measure the similarity of the unembedding vectors for
 
     We observe that the highest similarities in the unembedding vectors are found for synonyms or near-synonyms like mouse and rat. 
     Ignoring synonyms, we observe only a very weak correlation between unembedding similarity and the correlation of the effect vectors, suggesting that the entanglement in subliminal prompting is not purely a token-level phenomenon in the unembedding layer but might also carry semantic content.
-    E.g.~we see a strong correlation between the effect vectors for hog and cattle, which are both farm animals, but their unembedding vectors are not similar.
+    For example, we see a strong correlation between the effect vectors for hog and cattle, which are both farm animals, but their unembedding vectors are not similar.
     At the same time bunny and cougar have a higher unembedding similarity than hog and cattle, but their effect vectors are barely correlated.
 
     The correlations between the effect vectors for the animals used in Figure~\ref{fig:animal-pair-avg-r-vs-unembedding-cosine} are also shown as a heatmap in Figure~\ref{fig:heatmap_corr_by_relation_single_token}.
@@ -294,7 +296,7 @@ We will use this metric to measure the similarity of the unembedding vectors for
     The observed correlation is similarly weak as the correlation observed for the subliminal prompting in Figure~\ref{fig:animal-pair-avg-r-vs-unembedding-cosine}, although the r-value for some animal pairs, e.g., the pair (bunny, cougar), changes significantly.
     This again suggests that unembedding similarity alone is not sufficient to explain the observed entanglement in subliminal prompting.
 % We are missing here the heatmap for the correlation between the effect vectors for the boost condition, which would be the equivalent of Figure~\ref{fig:heatmap_corr_by_relation_single_token} for the boost condition.
-% This heatmap shows a better correlation for postive vs negative emotions as one would expect
+% This heatmap shows a better correlation for positive vs negative emotions as one would expect
 \end{qualitymark}
 
 \section{Discussion}
